@@ -47,14 +47,14 @@ Every study is stored as a JSON object in InstantDB and versioned in Git.
 ```json
 {
   "id": "uuid-001",
-  "title": "Tenant Payment Behaviour — Nairobi",
-  "summary": "Survey of 150 property managers in Nairobi",
+  "title": "Real Estate Agent Challenges — Nairobi",
+  "summary": "Interview study of 20+ real estate agents in Nairobi",
   "published_date": "2025-09-01",
   "market": {
     "countries": ["Kenya"],
     "cities": ["Nairobi"]
   },
-  "target_audience": ["property_manager"],
+  "target_audience": ["real_estate_agent"],
   "contributors": [
     {
       "name": "Jane Doe",
@@ -62,19 +62,20 @@ Every study is stored as a JSON object in InstantDB and versioned in Git.
     }
   ],
   "methodology": {
-    "type": "survey",
-    "sample_size": 150,
-    "collection_start": "2025-08-01",
-    "collection_end": "2025-08-07"
+    "type": "interview",
+    "sample_size": 20,
+    "collection_start": "2025-01-01",
+    "collection_end": "2025-01-15"
   },
   "top_findings": [
-    "62% report late payments are seasonal",
-    "48% prefer M-Pesa only",
-    "Most managers have no automated reminders"
+    "Getting access to fresh vacant units is the #1 challenge",
+    "Content creation is extremely time-consuming for part-time agents",
+    "Fast-moving rental market creates inventory scarcity"
   ],
   "insights": [
-    "Late payments linked to seasonal cash-flow gaps",
-    "Strong demand for M-Pesa-only platforms"
+    "Agents compete for limited inventory due to real-time vacancy updates",
+    "Part-time agents struggle with multi-platform content creation workflow",
+    "Fresh unit access directly impacts agent success and revenue"
   ],
   "links": {
     "raw_data": "https://drive.example.com/raw.csv",
@@ -82,7 +83,12 @@ Every study is stored as a JSON object in InstantDB and versioned in Git.
     "landing_page": "https://project.example.com"
   },
   "license": "CC-BY-4.0",
-  "tags": ["tenant-payments", "mpesa", "real-estate"],
+  "tags": [
+    "real-estate",
+    "content-creation",
+    "inventory-access",
+    "part-time-agents"
+  ],
   "verification_status": "pending",
   "created_at": "2025-09-01T12:00:00Z",
   "updated_at": "2025-09-01T12:00:00Z"

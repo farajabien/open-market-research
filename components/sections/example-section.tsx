@@ -14,9 +14,19 @@ export default function ExampleSection() {
             <p className="text-muted-foreground mb-4">
               We interviewed real estate agents in Nairobi. Top findings:
             </p>
-            <ol className="list-decimal list-inside space-y-2 mb-6">
-              <li className="text-sm">Tenant payments are the #1 pain.</li>
-              <li className="text-sm">Filling vacancies quickly is #2.</li>
+            <ol className="list-decimal list-inside space-y-3 mb-6">
+              <li className="text-sm">
+                <strong>Getting access to fresh vacant units</strong> — Due to
+                the fast-moving nature of rentals, by the time agents learn
+                about a vacancy, it&apos;s often already taken. Everyone is
+                competing for the same limited inventory.
+              </li>
+              <li className="text-sm">
+                <strong>Content creation is time-consuming</strong> — Most
+                agents work part-time, so shooting videos, editing content, and
+                posting across multiple social media platforms becomes a major
+                hassle that eats up their limited time.
+              </li>
             </ol>
             <p className="text-sm text-muted-foreground">
               Another founder, building in the same space, validated his problem
