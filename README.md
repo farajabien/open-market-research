@@ -95,6 +95,10 @@ Every study is stored as a JSON object in InstantDB and versioned in Git.
 }
 ```
 
+## 🌐 Live Site
+
+**Visit the live application**: [https://open-market-research.vercel.app/](https://open-market-research.vercel.app/)
+
 ## 🚀 Getting Started
 
 ### Clone the repo
@@ -107,27 +111,41 @@ cd open-market-research
 ### Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### Run locally
 
 ```bash
-npm run dev
+pnpm dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📝 How to Contribute
 
-1. **Fork** this repo.
-2. Add a new research study:
+We welcome contributions! Here are the main ways to contribute:
 
-   - Either via the **submission form** (UI).
-   - Or by creating a new JSON file under `/studies/`.
+### 🧪 Submit Research Studies
 
-3. Run validation (`npm run validate`) to check schema compliance.
-4. Submit a **pull request**.
+- **Email**: Send your research to [hello@fbien.com](mailto:hello@fbien.com)
+- **GitHub**: Create a pull request with your study data
+- **Form**: Use our submission form (coming soon)
 
-✅ Your study will be reviewed, verified, and merged into the repository.
+### 💻 Code Contributions
+
+- **Bug Fixes**: Report and fix issues
+- **Features**: Add new functionality
+- **UI/UX**: Improve the user experience
+- **Documentation**: Help others understand the project
+
+### 🤝 Community Building
+
+- **Share**: Tell other founders about the platform
+- **Feedback**: Provide suggestions and feedback
+- **Testing**: Help test new features
+
+**📖 For detailed contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md)**
 
 ## 🔒 Ethics & Licensing
 
@@ -153,10 +171,12 @@ npm run dev
 - [ ] Export & API access
 - [ ] Launch campaign with 10+ seed studies
 
-## 🤝 Community (Soon)
+## 🤝 Community
 
-- Join the [Discord/Slack link here] to discuss and contribute.
-- Follow updates on [Twitter/LinkedIn link here].
+- **Website**: [https://open-market-research.vercel.app/](https://open-market-research.vercel.app/)
+- **GitHub**: [https://github.com/farajabien/open-market-research](https://github.com/farajabien/open-market-research)
+- **Email**: [hello@fbien.com](mailto:hello@fbien.com)
+- **Personal Site**: [fbien.com](https://fbien.com)
 
 ## 📜 License
 

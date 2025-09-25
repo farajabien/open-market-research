@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { allRoutes } from "@/lib/auth/routes";
 
 export default function HeroSection() {
   return (
@@ -14,13 +15,13 @@ export default function HeroSection() {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
-            href="/studies"
+            href={allRoutes.STUDIES}
             className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Browse Studies
           </Link>
           <Link
-            href="/submit"
+            href={allRoutes.SUBMIT}
             className="rounded-md border border-border px-3.5 py-2.5 text-sm font-semibold text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             Submit Your Research

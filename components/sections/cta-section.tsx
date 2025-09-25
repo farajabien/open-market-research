@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { allRoutes } from "@/lib/auth/routes";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function CTASection() {
@@ -16,13 +17,13 @@ export default function CTASection() {
             </p>
             <div className="flex items-center justify-center gap-x-6">
               <Link
-                href="/submit"
+                href={allRoutes.SUBMIT}
                 className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Submit Research
               </Link>
               <Link
-                href="/studies"
+                href={allRoutes.STUDIES}
                 className="rounded-md border border-border px-3.5 py-2.5 text-sm font-semibold text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 Browse Studies

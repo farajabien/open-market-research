@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GitHubStar from "@/components/github-star";
+import AuthProvider from "@/components/auth/auth-provider";
+import HeaderWrapper from "@/components/layout/header-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +53,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <HeaderWrapper />
+          {children}
+        </AuthProvider>
         <GitHubStar />
       </body>
     </html>

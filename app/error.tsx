@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { allRoutes } from "@/lib/auth/routes";
 import { useEffect } from "react";
 
 export default function Error({
@@ -35,7 +36,7 @@ export default function Error({
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button onClick={reset}>Try Again</Button>
               <Button variant="outline" asChild>
-                <Link href="/">Go Home</Link>
+                <Link href={allRoutes.HOME}>Go Home</Link>
               </Button>
             </div>
             <div className="text-xs text-muted-foreground space-y-1">

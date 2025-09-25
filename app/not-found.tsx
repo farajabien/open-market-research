@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { allRoutes } from "@/lib/auth/routes";
 
 export default function NotFound() {
   return (
@@ -20,10 +21,10 @@ export default function NotFound() {
           <CardContent className="text-center space-y-4">
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild>
-                <Link href="/">Go Home</Link>
+                <Link href={allRoutes.HOME}>Go Home</Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/studies">Browse Studies</Link>
+                <Link href={allRoutes.STUDIES}>Browse Studies</Link>
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
