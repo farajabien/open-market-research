@@ -1,6 +1,7 @@
 "use client";
 
 import { db } from "@/lib/db";
+import { useAuth } from "@/lib/contexts/auth-context";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ import Link from "next/link";
 import { allRoutes } from "@/lib/auth/routes";
 
 export default function MySubmissionsClient() {
-  const user = db.useUser();
+  const { user, isLoading: authLoading } = useAuth();
   const { data, isLoading } = db.useQuery({
     studies: {
       $: {
@@ -23,6 +24,17 @@ export default function MySubmissionsClient() {
     },
   });
 
+  if (authLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-2 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!user) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -32,7 +44,7 @@ export default function MySubmissionsClient() {
             Please sign in to view your submissions.
           </p>
           <Button asChild>
-            <Link href={allRoutes.SUBMIT}>Get Started</Link>
+            <Link href={allRoutes.LOGIN}>Sign In</Link>
           </Button>
         </div>
       </div>

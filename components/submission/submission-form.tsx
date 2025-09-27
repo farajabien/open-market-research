@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { SUBMISSION_STEPS, type StudySubmission } from "@/lib/types/database";
+import RawResearchStep from "./steps/raw-research-step";
 import BasicInfoStep from "./steps/basic-info-step";
 import MarketStep from "./steps/market-step";
 import AudienceStep from "./steps/audience-step";
@@ -14,12 +15,16 @@ import MetadataStep from "./steps/metadata-step";
 import { db } from "@/lib/db";
 import { useRouter } from "next/navigation";
 import { allRoutes } from "@/lib/auth/routes";
+import type { AuthUser } from "@/lib/types/auth";
 
-export default function SubmissionForm() {
+interface SubmissionFormProps {
+  user: AuthUser;
+}
+
+export default function SubmissionForm({ user }: SubmissionFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<Partial<StudySubmission>>({});
-  const user = db.useUser();
   const router = useRouter();
 
   const totalSteps = SUBMISSION_STEPS.length;
@@ -86,16 +91,18 @@ export default function SubmissionForm() {
   const renderStep = () => {
     switch (currentStep) {
       case 0:
-        return <BasicInfoStep data={formData} onUpdate={updateFormData} />;
+        return <RawResearchStep data={formData} onUpdate={updateFormData} />;
       case 1:
-        return <MarketStep data={formData} onUpdate={updateFormData} />;
+        return <BasicInfoStep data={formData} onUpdate={updateFormData} />;
       case 2:
-        return <AudienceStep data={formData} onUpdate={updateFormData} />;
+        return <MarketStep data={formData} onUpdate={updateFormData} />;
       case 3:
-        return <MethodologyStep data={formData} onUpdate={updateFormData} />;
+        return <AudienceStep data={formData} onUpdate={updateFormData} />;
       case 4:
-        return <FindingsStep data={formData} onUpdate={updateFormData} />;
+        return <MethodologyStep data={formData} onUpdate={updateFormData} />;
       case 5:
+        return <FindingsStep data={formData} onUpdate={updateFormData} />;
+      case 6:
         return <MetadataStep data={formData} onUpdate={updateFormData} />;
       default:
         return null;
@@ -105,17 +112,20 @@ export default function SubmissionForm() {
   const canProceed = () => {
     switch (currentStep) {
       case 0:
-        return formData.title && formData.summary && formData.industry;
+        // Raw research step - can proceed if there's raw data or user skips
+        return formData.raw_data && formData.raw_data.length > 0;
       case 1:
-        return formData.countries && formData.countries.length > 0;
+        return formData.title && formData.summary && formData.industry;
       case 2:
-        return formData.target_audience && formData.target_audience.length > 0;
+        return formData.countries && formData.countries.length > 0;
       case 3:
-        return formData.methodology?.type && formData.methodology?.sample_size;
+        return formData.target_audience && formData.target_audience.length > 0;
       case 4:
-        return formData.top_findings && formData.top_findings.length > 0;
+        return formData.methodology?.type && formData.methodology?.sample_size;
       case 5:
-        return formData.license && formData.raw_data;
+        return formData.top_findings && formData.top_findings.length > 0;
+      case 6:
+        return formData.license;
       default:
         return false;
     }

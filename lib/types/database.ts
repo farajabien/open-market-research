@@ -313,6 +313,12 @@ export interface FormStep {
 
 export const SUBMISSION_STEPS: FormStep[] = [
   {
+    id: "raw-research",
+    title: "AI Research Structuring",
+    description: "Paste your raw research data for AI structuring",
+    fields: ["raw_data"],
+  },
+  {
     id: "basic-info",
     title: "Basic Information",
     description: "Tell us about your research study",
@@ -346,6 +352,6 @@ export const SUBMISSION_STEPS: FormStep[] = [
     id: "metadata",
     title: "Additional Information",
     description: "Links, tags, and other details",
-    fields: ["links", "tags", "license", "raw_data"],
+    fields: ["links", "tags", "license"],
   },
 ];

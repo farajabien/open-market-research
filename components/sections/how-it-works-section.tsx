@@ -10,9 +10,9 @@ export default function HowItWorksSection() {
     },
     {
       number: 2,
-      title: "Structure",
+      title: "AI Structure",
       description:
-        "We process it through our pipeline — turning raw notes into clean, structured data.",
+        "Our AI automatically structures your data — extracting key findings, insights, and metadata.",
     },
     {
       number: 3,

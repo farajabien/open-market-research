@@ -17,8 +17,8 @@ We make high-quality, attribution-respecting market research discoverable, reusa
 
 A public, structured repository of market research studies:
 
-- Contributors paste or upload their research.
-- An **LLM-powered pipeline** formats submissions into a validated JSON schema.
+- Contributors paste their raw research data (interviews, surveys, notes).
+- Our **AI-powered structuring** automatically formats submissions into validated JSON.
 - Studies are searchable, filterable, and downloadable (JSON/CSV/PDF).
 - Founders get contributor profiles and can link studies to their projects.
 - Everything is **free, open-source, and versioned in Git**.
@@ -33,7 +33,7 @@ A public, structured repository of market research studies:
 ## ✨ Features
 
 - 📥 **Simple submissions** — paste raw research, get structured JSON.
-- 🤖 **Automated structuring** — LLM ensures consistent schema.
+- 🤖 **AI-powered structuring** — GitHub Models automatically formats your data.
 - 🔍 **Search & filter** — by country, city, role, tags.
 - 👤 **Contributor profiles** — get attribution and link to your project.
 - ✅ **Moderation & verification** — quality maintained via human checks.
@@ -80,7 +80,8 @@ Every study is stored as a JSON object in InstantDB and versioned in Git.
   "links": {
     "raw_data": "https://drive.example.com/raw.csv",
     "report": "https://drive.example.com/report.pdf",
-    "landing_page": "https://project.example.com"
+    "landing_page": "https://project.example.com",
+    "presentation": "https://slides.example.com/presentation.pdf"
   },
   "license": "CC-BY-4.0",
   "tags": [
@@ -159,14 +160,14 @@ We welcome contributions! Here are the main ways to contribute:
 - **Frontend:** Next.js + TailwindCSS + Shadcn UI
 - **Database:** InstantDB
 - **Automation:** GitHub Actions + JSON Schema validation
-- **LLM Processing:** provider-agnostic
+- **LLM Processing:** GitHub Models API
 - **Deployment:** Vercel
 
 ## 📈 Roadmap
 
-- [ ] Submission form → JSON structuring (MVP)
-- [ ] Public index + search & filter
-- [ ] Contributor profiles
+- [x] Submission form → JSON structuring (MVP)
+- [x] Public index + search & filter
+- [x] Contributor profiles
 - [ ] Moderation & verification workflow
 - [ ] Export & API access
 - [ ] Launch campaign with 10+ seed studies

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/lib/db";
+import { useAuth } from "@/lib/contexts/auth-context";
 import SubmissionForm from "./submission-form";
 import { allRoutes } from "@/lib/auth/routes";
 
 export default function SubmissionFormWrapper() {
-  const { user, isLoading, error } = db.useAuth();
+  const { user, isLoading, error } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -71,5 +71,5 @@ export default function SubmissionFormWrapper() {
   }
 
   // User is authenticated, show the form
-  return <SubmissionForm />;
+  return <SubmissionForm user={user} />;
 }

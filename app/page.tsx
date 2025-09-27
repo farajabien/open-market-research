@@ -1,4 +1,5 @@
 import HeroSection from "@/components/sections/hero-section";
+import AIFeaturesSection from "@/components/sections/ai-features-section";
 import HowItWorksSection from "@/components/sections/how-it-works-section";
 import WhySection from "@/components/sections/why-section";
 import AudienceSection from "@/components/sections/audience-section";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <HeroSection />
+      <AIFeaturesSection />
       <HowItWorksSection />
       <WhySection />
       <AudienceSection />

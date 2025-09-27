@@ -1,26 +1,15 @@
 "use client";
 
-import { db } from "@/lib/db";
+import { useAuth } from "@/lib/contexts/auth-context";
 import Header from "./header";
 
 export default function HeaderWrapper() {
-  return (
-    <>
-      <db.SignedIn>
-        <HeaderWithUser />
-      </db.SignedIn>
-      <db.SignedOut>
-        <HeaderWithoutUser />
-      </db.SignedOut>
-    </>
-  );
-}
+  const { user, isLoading } = useAuth();
 
-function HeaderWithUser() {
-  const user = db.useUser();
+  // Show loading state while auth is being determined
+  if (isLoading) {
+    return <Header user={null} />;
+  }
+
   return <Header user={user} />;
-}
-
-function HeaderWithoutUser() {
-  return <Header user={null} />;
 }

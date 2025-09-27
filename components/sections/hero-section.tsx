@@ -10,8 +10,11 @@ export default function HeroSection() {
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted-foreground">
           Open Market Research is a free, open-source hub for structured startup
-          market research. Browse studies, share your findings, and build
-          smarter from day one.
+          market research.{" "}
+          <strong>
+            Paste your raw research and our AI structures it automatically.
+          </strong>{" "}
+          Browse studies, share your findings, and build smarter from day one.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
