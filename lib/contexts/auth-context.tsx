@@ -58,6 +58,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.log("🔄 Auth context state change:", {
         authLoading,
         instantUser: instantUser?.email,
+        instantUserId: instantUser?.id,
       });
 
       if (authLoading) {
@@ -113,10 +114,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setError(null);
   }, []);
 
-  const value: AuthContextType = {
+  // Fallback user if profile loading fails but InstantDB user exists
+  const fallbackUser =
+    instantUser && !user
+      ? {
+          id: instantUser.id,
+          email: instantUser.email || "",
+          name: instantUser.email?.split("@")[0] || "User",
+          profile_url: undefined,
+        }
+      : null;
+
+  const finalUser = user || fallbackUser;
+  const isAuthenticated = !!finalUser || !!instantUser;
+
+  console.log("AuthContext - Final state:", {
+    instantUser: instantUser?.email,
+    instantUserId: instantUser?.id,
     user,
+    fallbackUser,
+    finalUser,
+    isAuthenticated,
     isLoading,
-    isAuthenticated: !!user,
+  });
+
+  const value: AuthContextType = {
+    user: finalUser,
+    isLoading,
+    isAuthenticated,
     error,
     signIn,
     signOut,

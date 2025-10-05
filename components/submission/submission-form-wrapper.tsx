@@ -6,8 +6,15 @@ import SubmissionForm from "./submission-form";
 import { allRoutes } from "@/lib/auth/routes";
 
 export default function SubmissionFormWrapper() {
-  const { user, isLoading, error } = useAuth();
+  const { user, isLoading, error, isAuthenticated } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
+
+  console.log("SubmissionFormWrapper - Auth state:", {
+    user,
+    isLoading,
+    error,
+    isAuthenticated,
+  });
 
   useEffect(() => {
     if (error) {
@@ -57,19 +64,57 @@ export default function SubmissionFormWrapper() {
     );
   }
 
-  // If not authenticated, this component should not render
-  // The AuthProvider should handle redirecting to login
-  if (!user) {
+  // If not authenticated, show login prompt
+  if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Redirecting to login...</p>
+        <div className="text-center max-w-md mx-auto p-6">
+          <h2 className="text-2xl font-bold mb-4">Authentication Required</h2>
+          <p className="text-muted-foreground mb-6">
+            Please sign in to submit research studies
+          </p>
+          <div className="space-y-2">
+            <a
+              href={allRoutes.LOGIN}
+              className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 inline-block"
+            >
+              Sign In
+            </a>
+            <a
+              href={allRoutes.HOME}
+              className="w-full px-4 py-2 border border-border rounded-md hover:bg-accent inline-block"
+            >
+              Go Home
+            </a>
+          </div>
         </div>
       </div>
     );
   }
 
   // User is authenticated, show the form
+  // At this point, user should not be null since we checked isAuthenticated
+  if (!user) {
+    console.error(
+      "SubmissionFormWrapper: User is null but isAuthenticated is true"
+    );
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Authentication Error</h2>
+          <p className="text-muted-foreground mb-4">
+            User data is not available. Please refresh the page.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return <SubmissionForm user={user} />;
 }

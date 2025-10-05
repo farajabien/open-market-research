@@ -11,6 +11,12 @@ import { allRoutes } from "@/lib/auth/routes";
 
 export default function MySubmissionsClient() {
   const { user, isLoading: authLoading } = useAuth();
+
+  console.log("MySubmissionsClient - Auth state:", {
+    user,
+    authLoading,
+    isAuthenticated: !!user,
+  });
   const { data, isLoading } = db.useQuery({
     studies: {
       $: {
